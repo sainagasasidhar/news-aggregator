@@ -1,0 +1,12 @@
+[
+    {
+        "fullName": "ram",
+        "email": "ram@gmail.com",
+        "password": "$2b$08$9/ZZHGQR9NkbsepIDdsIvunTkhXORBOZ9SoaoGKuoKG.IK9cwUZKW",
+        "preferences": [
+            "sports",
+            "finances"
+        ],
+        "id": 1
+    }
+]
