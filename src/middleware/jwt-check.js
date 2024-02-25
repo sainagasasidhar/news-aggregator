@@ -9,6 +9,9 @@ const verifyToken = (req, res, next) => {
                 req.message = "Header verification failed";
                 next();
             } else {
+                let id = decode.id;
+                let user = User.findUserById(id);
+                req.user = user;
                 next();
             }
         })

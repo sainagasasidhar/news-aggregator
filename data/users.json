@@ -1,12 +1,34 @@
 [
     {
-        "fullName": "ram",
+        "name": "ram",
         "email": "ram@gmail.com",
         "password": "$2b$08$9/ZZHGQR9NkbsepIDdsIvunTkhXORBOZ9SoaoGKuoKG.IK9cwUZKW",
+        "preferences": {
+            "preferences": [
+                "movies",
+                "nature"
+            ]
+        },
+        "id": 1
+    },
+    {
+        "name": "ram",
+        "email": "ram@gmail.com",
+        "password": "$2b$08$NFz7a66GVskv1ci9kFHIDuQb6hvA.Ga7YoFFLwZuDMRlTtSL1nrOK",
         "preferences": [
             "sports",
             "finances"
         ],
-        "id": 1
+        "id": 2
+    },
+    {
+        "name": "Clark Kent",
+        "email": "clark@superman.com",
+        "password": "$2b$08$ple6Vhqyi0sfZb9R.qGtb.sxCI//dw0Scjk9Ome6MSDaBvCYgYRVa",
+        "preferences": [
+            "movies",
+            "comics"
+        ],
+        "id": 3
     }
 ]

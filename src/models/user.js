@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 class User {
     static validateUserSignUp (user) {
         let response = {statusCode:200,details:""};
-        if(!user.fullName) {
+        if(!user.name) {
             response.statusCode = 400;
             response.details = "Please Enter fullName";
         } else if (!user.email) {
@@ -35,14 +35,14 @@ class User {
             return user.email == signin.email;
         });
         if (user.length<0) {
-            response.statusCode = 401;
+            response.statusCode = 400;
             response.details = "Please Enter a Valid Email";
         } else if (!bcrypt.compareSync(signin.password, user[0].password)){
-            response.statusCode = 401;
+            response.statusCode = 400;
             response.details = "Please Enter a Valid Password";
         } else {
             var token = jwt.sign({
-                id: user.id
+                id: user[0].id
             }, "user_signup", {
                 expiresIn: 86400
             });
@@ -52,17 +52,24 @@ class User {
             return response;
         }
     }
-    static updatePerferences(data) {
+    static updatePerferences(data, preferences) {
         let response = {statusCode:200,details:""};
-        for (let i=0; i<data.length; i++) {
-            if (tasks[i].id == id) {
-                tasks[i].preferences = data.preferences;
+        for (let i=0; i<users.length; i++) {
+            if (users[i].id == data.id) {
+                users[i].preferences = preferences;
             }
         }
-        fs.writeFileSync('data/user.json', JSON.stringify(tasks,null,4), {encoding: 'utf8', flag: 'w'});
+        fs.writeFileSync('data/users.json', JSON.stringify(users,null,4), {encoding: 'utf8', flag: 'w'});
         response.details = "preferences Updated Sucessfully";
         response.statusCode = 200;
         return response;
+    }
+
+    static findUserById(id) {
+        let user = users.filter(function(user) {
+            return user.id == id;
+        });
+        return user[0];
     }
 }
 module.exports = User;
